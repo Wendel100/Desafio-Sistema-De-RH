@@ -44,6 +44,7 @@ public class FuncionarioController : ControllerBase
     public IActionResult Criar(Funcionario funcionario)
     {
         _context.Funcionarios.Add(funcionario);
+        _context.SaveChanges();
         // TODO: Chamar o método SaveChanges do _context para salvar no Banco SQL
 
         var tableClient = GetTableClient();
@@ -64,8 +65,10 @@ public class FuncionarioController : ControllerBase
 
         funcionarioBanco.Nome = funcionario.Nome;
         funcionarioBanco.Endereco = funcionario.Endereco;
+        funcionarioBanco.Ramal = funcionario.Ramal;
+        funcionarioBanco.Salario = funcionario.Salario;
         // TODO: As propriedades estão incompletas
-
+        _context.Update(funcionarioBanco);
         // TODO: Chamar o método de Update do _context.Funcionarios para salvar no Banco SQL
         _context.SaveChanges();
 
@@ -85,6 +88,7 @@ public class FuncionarioController : ControllerBase
         if (funcionarioBanco == null)
             return NotFound();
 
+            _context.Funcionarios.Remove(funcionarioBanco);
         // TODO: Chamar o método de Remove do _context.Funcionarios para salvar no Banco SQL
         _context.SaveChanges();
 
