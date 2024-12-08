@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Azure;
 using Azure.Data.Tables;
+using trilha_net_azure_desafio.Models;
 
 namespace TrilhaNetAzureDesafio.Models
 {
